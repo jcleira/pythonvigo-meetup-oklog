@@ -1,0 +1,49 @@
+Ok Log
+Distributed and coördination-free log management system
+00:00 16 Mar 2015
+
+Jose Corral
+Python Vigo
+
+* Proyecto Open Source que sale a partir de una discusión en twitter.
+
+.image twit.png
+.image oklog.png
+
+* El problema que intenta solucionar
+
+Gestión de logs en pequeña, media y gran escala.
+
+- Pequeña escala.
+  Más de una aplicacion en producción (logfiles).
+
+- Media escala.
+  Más de cinco aplicaciones en producción o sistemas distribuidos (logfiles / ELK).
+
+- Gran escala.
+  N aplicaciones en producción o sistemas distribuidos (ELK, Splunk).
+
+* Como lo intenta solucionar
+
+.image oklog-diagram.png
+
+Run oklog service
+
+  oklog ingeststore -store.segment-replication-factor 1
+
+Forward logs to oklog
+
+  ./myservice | oklog forward localhost
+
+* Casos de uso
+
+- Centralizar la consulta de logs desde los puestos de desarrollo
+
+- Mergear los logs de diferentes servicios includa bd.
+
+.image activerecord.png
+
+- Integración en un sistema más complejo
+
+.image slug.png
+
